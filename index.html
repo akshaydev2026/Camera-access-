@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Demo</title>
+</head>
+<body>
+  <h2>Camera Demo</h2>
+
+  <button onclick="startCamera()">Start Camera</button>
+  <br><br>
+
+  <video id="video" width="320" autoplay playsinline></video>
+
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        document.getElementById("video").srcObject = stream;
+      } catch (e) {
+        alert("Camera permission denied.");
+      }
+    }
+  </script>
+</body>
+</html>
